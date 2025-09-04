@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { TextField, Button, Box, Typography } from "@mui/material";
 
 function ContactsPage() {
   const [formData, setFormData] = useState({
@@ -34,8 +35,6 @@ function ContactsPage() {
     }
 
     setErrors(newErrors);
-
-    
     return Object.keys(newErrors).length === 0;
   };
 
@@ -46,55 +45,63 @@ function ContactsPage() {
 
     console.log("Форма отправлена:", formData);
 
-    
     setFormData({ name: "", email: "", message: "" });
     setErrors({});
   };
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>Свяжитесь с нами</h1>
-      <form
-        onSubmit={handleSubmit}
-        style={{ display: "flex", flexDirection: "column", maxWidth: "400px" }}
-      >
-        <label>
-          Имя:
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-          />
-          {errors.name && <p style={{ color: "red" }}>{errors.name}</p>}
-        </label>
+    <Box sx={{ p: 4, maxWidth: 500, margin: "0 auto" }}>
+      <Typography variant="h4" gutterBottom>
+        Свяжитесь с нами
+      </Typography>
+      <form onSubmit={handleSubmit}>
+        <TextField
+          label="Имя"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+          fullWidth
+          margin="normal"
+          error={!!errors.name}
+          helperText={errors.name}
+        />
 
-        <label>
-          Email:
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-          />
-          {errors.email && <p style={{ color: "red" }}>{errors.email}</p>}
-        </label>
+        <TextField
+          label="Email"
+          name="email"
+          type="email"
+          value={formData.email}
+          onChange={handleChange}
+          fullWidth
+          margin="normal"
+          error={!!errors.email}
+          helperText={errors.email}
+        />
 
-        <label>
-          Сообщение:
-          <textarea
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-          />
-          {errors.message && <p style={{ color: "red" }}>{errors.message}</p>}
-        </label>
+        <TextField
+          label="Сообщение"
+          name="message"
+          multiline
+          rows={4}
+          value={formData.message}
+          onChange={handleChange}
+          fullWidth
+          margin="normal"
+          error={!!errors.message}
+          helperText={errors.message}
+        />
 
-        <button type="submit" style={{ marginTop: "10px" }}>
+        <Button
+          type="submit"
+          variant="contained"
+          color="primary"
+          fullWidth
+          sx={{ mt: 2 }}
+        >
           Отправить
-        </button>
+        </Button>
       </form>
-    </div>
+    </Box>
   );
 }
 
