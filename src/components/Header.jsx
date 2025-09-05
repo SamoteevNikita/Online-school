@@ -1,19 +1,9 @@
 import React from "react";
-import { AppBar, Toolbar, Typography, Box, IconButton } from "@mui/material";
+import { AppBar, Toolbar, Typography, Box, IconButton, Link } from "@mui/material";
 import { Facebook, Instagram, Twitter } from "@mui/icons-material";
 import { NavLink } from "react-router-dom";
 
 function Header() {
-  const navLinkStyle = ({ isActive }) => ({
-    textDecoration: "none",
-    fontSize: "18px",
-    color: isActive ? "green" : "black",
-    fontWeight: isActive ? "bold" : "normal",
-    borderBottom: isActive ? "2px solid green" : "2px solid transparent",
-    paddingBottom: "2px",
-    transition: "all 0.3s ease",
-  });
-
   return (
     <AppBar
       position="static"
@@ -22,133 +12,115 @@ function Header() {
       sx={{ borderBottom: "1px solid #eee" }}
     >
       <Toolbar sx={{ justifyContent: "space-between" }}>
+        
         <Typography
           variant="h6"
+          component={NavLink}
+          to="/"
           sx={{
-            fontFamily: "cursive",
-            fontWeight: "bold",
-            fontSize: "22px",
+            fontFamily: "'Roboto', 'Arial', sans-serif",
+            fontWeight: 700,
+            letterSpacing: "0.5px",
+            textDecoration: "none",
+            color: "inherit",
+            cursor: "pointer",
           }}
         >
-          Online German School
+          Bright School
         </Typography>
 
         
         <Box sx={{ display: "flex", gap: 3 }}>
-          <NavLink to="/" style={navLinkStyle}>
-            {({ isActive }) => (
-              <span
-                style={{
-                  color: isActive ? "green" : "black",
-                  fontWeight: isActive ? "bold" : "normal",
-                  borderBottom: isActive
-                    ? "2px solid green"
-                    : "2px solid transparent",
-                  paddingBottom: "2px",
-                  transition: "all 0.3s ease",
-                }}
-                onMouseEnter={(e) => {
-                  e.target.style.color = "green";
-                  e.target.style.borderBottom = "2px solid green";
-                }}
-                onMouseLeave={(e) => {
-                  if (!isActive) {
-                    e.target.style.color = "black";
-                    e.target.style.borderBottom = "2px solid transparent";
-                  }
-                }}
-              >
-                Home
-              </span>
-            )}
-          </NavLink>
+          <Link
+            component={NavLink}
+            to="/"
+            underline="none"
+            color="inherit"
+            sx={{
+              px: 1.5,
+              py: 0.7,
+              borderRadius: "6px",
+              transition: "0.3s",
+              fontFamily: "'Roboto', 'Arial', sans-serif",
+              fontSize: "1.1rem",
+              fontWeight: 500,
+              "&:hover": {
+                color: "white",
+                backgroundColor: "green",
+              },
+            }}
+          >
+            Home
+          </Link>
 
-          <NavLink to="/courses" style={navLinkStyle}>
-            {({ isActive }) => (
-              <span
-                style={{
-                  color: isActive ? "green" : "black",
-                  fontWeight: isActive ? "bold" : "normal",
-                  borderBottom: isActive
-                    ? "2px solid green"
-                    : "2px solid transparent",
-                  paddingBottom: "2px",
-                  transition: "all 0.3s ease",
-                }}
-                onMouseEnter={(e) => {
-                  e.target.style.color = "green";
-                  e.target.style.borderBottom = "2px solid green";
-                }}
-                onMouseLeave={(e) => {
-                  if (!isActive) {
-                    e.target.style.color = "black";
-                    e.target.style.borderBottom = "2px solid transparent";
-                  }
-                }}
-              >
-                Courses
-              </span>
-            )}
-          </NavLink>
+          <Link
+            component={NavLink}
+            to="/courses"
+            underline="none"
+            color="inherit"
+            sx={{
+              px: 1.5,
+              py: 0.7,
+              borderRadius: "6px",
+              transition: "0.3s",
+              fontFamily: "'Roboto', 'Arial', sans-serif",
+              fontSize: "1.1rem",
+              fontWeight: 500,
+              "&:hover": {
+                color: "white",
+                backgroundColor: "green",
+              },
+            }}
+            >
+            Courses
+          </Link>
 
-          <NavLink to="/teachers" style={navLinkStyle}>
-            {({ isActive }) => (
-              <span
-                style={{
-                  color: isActive ? "green" : "black",
-                  fontWeight: isActive ? "bold" : "normal",
-                  borderBottom: isActive
-                    ? "2px solid green"
-                    : "2px solid transparent",
-                  paddingBottom: "2px",
-                  transition: "all 0.3s ease",
-                }}
-                onMouseEnter={(e) => {
-                  e.target.style.color = "green";
-                  e.target.style.borderBottom = "2px solid green";
-                }}
-                onMouseLeave={(e) => {
-                  if (!isActive) {
-                    e.target.style.color = "black";
-                    e.target.style.borderBottom = "2px solid transparent";
-                  }
-                }}
-              >
-                Teachers Page
-              </span>
-            )}
-          </NavLink>
+          <Link
+            component={NavLink}
+            to="/teachers"
+            underline="none"
+            color="inherit"
+            sx={{
+              px: 1.5,
+              py: 0.7,
+              borderRadius: "6px",
+              transition: "0.3s",
+              fontFamily: "'Roboto', 'Arial', sans-serif",
+              fontSize: "1.1rem",
+              fontWeight: 500,
+              "&:hover": {
+                color: "white",
+                backgroundColor: "green",
+              },
+            }}
+          >
+            Teachers
+          </Link>
 
-          <NavLink to="/contacts" style={navLinkStyle}>
-            {({ isActive }) => (
-              <span
-                style={{
-                  color: isActive ? "green" : "black",
-                  fontWeight: isActive ? "bold" : "normal",
-                  borderBottom: isActive
-                    ? "2px solid green"
-                    : "2px solid transparent",
-                  paddingBottom: "2px",
-                  transition: "all 0.3s ease",
-                }}
-                onMouseEnter={(e) => {
-                  e.target.style.color = "green";
-                  e.target.style.borderBottom = "2px solid green";
-                }}
-                onMouseLeave={(e) => {
-                  if (!isActive) {
-                    e.target.style.color = "black";
-                    e.target.style.borderBottom = "2px solid transparent";
-                  }
-                }}
-              >
-                Contact
-              </span>
-            )}
-          </NavLink>
+          <Link
+            component={NavLink}
+            to="/contacts"
+            underline="none"
+            color="inherit"
+            sx={{
+              px: 1.5,
+              py: 0.7,
+              borderRadius: "6px",
+              transition: "0.3s",
+              fontFamily: "'Roboto', 'Arial', sans-serif",
+              fontSize: "1.1rem",
+              fontWeight: 500,
+              "&:hover": {
+                color: "white",
+                backgroundColor: "green",
+              },
+            }}
+          >
+            Contact
+          </Link>
         </Box>
 
-        
+       
         <Box>
           <IconButton color="inherit">
             <Facebook />

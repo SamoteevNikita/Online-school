@@ -22,7 +22,7 @@ function HomePage() {
               gutterBottom
               sx={{ color: "#1a1a1a" }}
             >
-              Учи немецкий язык по своему запросу
+              Твой персональный план обучения немецкому
             </Typography>
 
             <Typography
