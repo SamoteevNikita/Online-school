@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import HomePage from "./pages/HomePage";
 import CoursesPage from "./pages/CoursesPage";
@@ -6,7 +6,7 @@ import TeachersPage from "./pages/TeachersPage";
 import ContactsPage from "./pages/ContactsPage";
 function App() {
   return (
-    <BrowserRouter basename="/Online-school">
+    <HashRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
@@ -15,7 +15,7 @@ function App() {
           <Route path="contacts" element={<ContactsPage />} />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
