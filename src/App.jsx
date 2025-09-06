@@ -6,7 +6,7 @@ import TeachersPage from "./pages/TeachersPage";
 import ContactsPage from "./pages/ContactsPage";
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/Online-school">
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
