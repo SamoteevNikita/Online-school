@@ -7,112 +7,118 @@ function Header() {
   return (
     <AppBar
       position="static"
-      color="transparent"
-      elevation={1}
-      sx={{ borderBottom: "1px solid #eee" }}
+      elevation={0}
+      sx={{
+        backgroundColor: "transparent", // полностью прозрачный
+        boxShadow: "none",              // убираем тень
+      }}
     >
+
+
+
       <Toolbar sx={{ justifyContent: "space-between" }}>
         
+        {/* Логотип */}
         <Typography
           variant="h6"
           component={NavLink}
           to="/"
           sx={{
-            fontFamily: "'Roboto', 'Arial', sans-serif",
+            fontFamily: "Raleway, sans-serif",
             fontWeight: 700,
             letterSpacing: "0.5px",
             textDecoration: "none",
-            color: "inherit",
+            color: "#FFFFFF",
             cursor: "pointer",
+            "&:hover": {
+              color: "#A1C2FF",
+            },
           }}
         >
-          Bright School
+          Myvision.School
         </Typography>
 
-        
+        {/* Навигация */}
         <Box sx={{ display: "flex", gap: 3 }}>
           <Link
             component={NavLink}
             to="/"
             underline="none"
-            color="inherit"
+            color="#FFFFFF"
             sx={{
               px: 1.5,
               py: 0.7,
               borderRadius: "6px",
               transition: "0.3s",
-              fontFamily: "'Roboto', 'Arial', sans-serif",
+              fontFamily: "Inter, sans-serif",
               fontSize: "1.1rem",
               fontWeight: 500,
               "&:hover": {
-                color: "white",
-                backgroundColor: "green",
+                color: "#2D2DFF",
+                backgroundColor: "rgba(45,45,255,0.15)",
               },
             }}
           >
             Home
           </Link>
-
           <Link
             component={NavLink}
             to="/courses"
             underline="none"
-            color="inherit"
+            color="#FFFFFF"
             sx={{
               px: 1.5,
               py: 0.7,
               borderRadius: "6px",
               transition: "0.3s",
-              fontFamily: "'Roboto', 'Arial', sans-serif",
+              fontFamily: "Inter, sans-serif",
               fontSize: "1.1rem",
               fontWeight: 500,
               "&:hover": {
-                color: "white",
-                backgroundColor: "green",
+                color: "#2D2DFF",
+                backgroundColor: "rgba(45,45,255,0.15)",
               },
             }}
-            >
+          >
             Courses
           </Link>
-
           <Link
             component={NavLink}
             to="/teachers"
             underline="none"
-            color="inherit"
+            color="#FFFFFF"
             sx={{
               px: 1.5,
               py: 0.7,
               borderRadius: "6px",
               transition: "0.3s",
-              fontFamily: "'Roboto', 'Arial', sans-serif",
+              fontFamily: "Inter, sans-serif",
               fontSize: "1.1rem",
               fontWeight: 500,
               "&:hover": {
-                color: "white",
-                backgroundColor: "green",
+                color: "#2D2DFF",
+                backgroundColor: "rgba(45,45,255,0.15)",
               },
             }}
           >
             Teachers
           </Link>
-
           <Link
             component={NavLink}
             to="/contacts"
             underline="none"
-            color="inherit"
+            color="#FFFFFF"
             sx={{
               px: 1.5,
               py: 0.7,
               borderRadius: "6px",
               transition: "0.3s",
-              fontFamily: "'Roboto', 'Arial', sans-serif",
+              fontFamily: "Inter, sans-serif",
               fontSize: "1.1rem",
               fontWeight: 500,
               "&:hover": {
-                color: "white",
-                backgroundColor: "green",
+                color: "#2D2DFF",
+                backgroundColor: "rgba(45,45,255,0.15)",
               },
             }}
           >
@@ -120,16 +126,16 @@ function Header() {
           </Link>
         </Box>
 
-       
+        {/* Соцсети */}
         <Box>
           <IconButton color="inherit">
-            <Facebook />
+            <Facebook sx={{ color: "#A1C2FF" }} />
           </IconButton>
           <IconButton color="inherit">
-            <Instagram />
+            <Instagram sx={{ color: "#A1C2FF" }} />
           </IconButton>
           <IconButton color="inherit">
-            <Twitter />
+            <Twitter sx={{ color: "#A1C2FF" }} />
           </IconButton>
         </Box>
       </Toolbar>

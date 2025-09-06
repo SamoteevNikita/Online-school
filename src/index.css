@@ -5,7 +5,6 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -22,13 +21,27 @@ a:hover {
   color: #535bf2;
 }
 
-body {
+html, body, #root {
+  height: 100%;
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  padding: 0;
 }
+
+body {
+  background: linear-gradient(
+    to bottom,
+    #0D1B5E 0%,   /* тёмно-синий сверху */
+    #1F4099 40%,  /* насыщенный синий */
+    #5170EB 70%,  /* яркий синий */
+    #A1C2FF 100%  /* светлый голубой внизу */
+  );
+  background-attachment: fixed;
+  background-size: cover;
+  font-family: 'Raleway', 'Inter', sans-serif;
+  color: white;
+}
+
+
 
 h1 {
   font-size: 3.2em;
@@ -54,14 +67,17 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+/* Светлая тема (если у пользователя включена) */
 @media (prefers-color-scheme: light) {
-  :root {
+  body {
+    background: linear-gradient(to bottom, #ffffff, #e6d6f2, #c3aed6);
     color: #213547;
-    background-color: #ffffff;
   }
+
   a:hover {
     color: #747bff;
   }
+
   button {
     background-color: #f9f9f9;
   }

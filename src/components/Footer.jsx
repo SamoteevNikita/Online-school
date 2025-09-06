@@ -5,17 +5,22 @@ function Footer() {
     <Box
       component="footer"
       sx={{
-        bgcolor: "grey.200", 
-        color: "grey.800", 
+        backgroundColor: "rgba(161, 194, 255, 0.15)", // такой же фон, как у Header
+        backdropFilter: "blur(10px)",                  // эффект стекла
+        color: "#FFFFFF",
         textAlign: "center",
-        p: 2,
+        p: 3,
         mt: "auto",
+        borderTop: "1px solid rgba(255,255,255,0.2)", // лёгкая разделительная линия
+        fontFamily: "Inter, sans-serif",
       }}
     >
-      <Typography variant="body2">
+      <Typography variant="body2" sx={{ opacity: 0.9 }}>
         © {new Date().getFullYear()} Online German School. Все права защищены.
       </Typography>
     </Box>
+
+
   );
 }
 

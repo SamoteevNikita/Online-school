@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { TextField, Button, Box, Typography } from "@mui/material";
+import { TextField, Button, Box, Typography, Paper } from "@mui/material";
 
 function ContactsPage() {
   const [formData, setFormData] = useState({
@@ -50,57 +50,121 @@ function ContactsPage() {
   };
 
   return (
-    <Box sx={{ p: 4, maxWidth: 500, margin: "0 auto" }}>
-      <Typography variant="h4" gutterBottom>
-        Свяжитесь с нами
-      </Typography>
-      <form onSubmit={handleSubmit}>
-        <TextField
-          label="Имя"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          fullWidth
-          margin="normal"
-          error={!!errors.name}
-          helperText={errors.name}
-        />
-
-        <TextField
-          label="Email"
-          name="email"
-          type="email"
-          value={formData.email}
-          onChange={handleChange}
-          fullWidth
-          margin="normal"
-          error={!!errors.email}
-          helperText={errors.email}
-        />
-
-        <TextField
-          label="Сообщение"
-          name="message"
-          multiline
-          rows={4}
-          value={formData.message}
-          onChange={handleChange}
-          fullWidth
-          margin="normal"
-          error={!!errors.message}
-          helperText={errors.message}
-        />
-
-        <Button
-          type="submit"
-          variant="contained"
-          color="primary"
-          fullWidth
-          sx={{ mt: 2 }}
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        minHeight: "100vh",
+        
+        p: 2,
+      }}
+    >
+      <Paper
+        elevation={6}
+        sx={{
+          p: 4,
+          maxWidth: 420,
+          width: "100%",
+          borderRadius: 3,
+          textAlign: "center",
+          background: "rgba(255, 255, 255, 0.05)", // прозрачный
+          backdropFilter: "blur(12px)", // эффект стекла
+          color: "#FFFFFF",
+        }}
+      >
+        <Typography
+          variant="h4"
+          gutterBottom
+          sx={{ fontFamily: "Raleway, sans-serif", fontWeight: 700 }}
         >
-          Отправить
-        </Button>
-      </form>
+          Связаться с нами
+        </Typography>
+        <Typography
+          variant="body2"
+          sx={{ mb: 3, opacity: 0.8, fontFamily: "Inter, sans-serif" }}
+        >
+          Напишите нам, и мы ответим в ближайшее время
+        </Typography>
+
+        <form onSubmit={handleSubmit}>
+          <TextField
+            label="Имя"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            fullWidth
+            margin="normal"
+            error={!!errors.name}
+            helperText={errors.name}
+            InputLabelProps={{ style: { color: "#A1C2FF" } }}
+            InputProps={{
+              style: {
+                color: "#fff",
+                borderRadius: "8px",
+              },
+            }}
+          />
+
+          <TextField
+            label="Email"
+            name="email"
+            type="email"
+            value={formData.email}
+            onChange={handleChange}
+            fullWidth
+            margin="normal"
+            error={!!errors.email}
+            helperText={errors.email}
+            InputLabelProps={{ style: { color: "#A1C2FF" } }}
+            InputProps={{
+              style: {
+                color: "#fff",
+                borderRadius: "8px",
+              },
+            }}
+          />
+
+          <TextField
+            label="Сообщение"
+            name="message"
+            multiline
+            rows={4}
+            value={formData.message}
+            onChange={handleChange}
+            fullWidth
+            margin="normal"
+            error={!!errors.message}
+            helperText={errors.message}
+            InputLabelProps={{ style: { color: "#A1C2FF" } }}
+            InputProps={{
+              style: {
+                color: "#fff",
+                borderRadius: "8px",
+              },
+            }}
+          />
+
+          <Button
+            type="submit"
+            fullWidth
+            sx={{
+              mt: 3,
+              py: 1.2,
+              borderRadius: "8px",
+              fontWeight: "bold",
+              background:
+                "linear-gradient(90deg, #2D2DFF, #6C63FF)", // градиент кнопки
+              color: "#fff",
+              "&:hover": {
+                background: "linear-gradient(90deg, #1F4099, #2D2DFF)",
+              },
+            }}
+          >
+            Отправить
+          </Button>
+        </form>
+      </Paper>
     </Box>
   );
 }
