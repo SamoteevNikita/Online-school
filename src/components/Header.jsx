@@ -9,8 +9,8 @@ function Header() {
       position="static"
       elevation={0}
       sx={{
-        backgroundColor: "transparent", // полностью прозрачный
-        boxShadow: "none",              // убираем тень
+        backgroundColor: "transparent", 
+        boxShadow: "none",              
       }}
     >
 

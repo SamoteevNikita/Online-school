@@ -49,6 +49,8 @@ function HomePage() {
 
               <Box sx={{ display: "flex", gap: 2, mt: 4, mb: 4 }}>
                 <Button
+                  component={Link}
+                  to="/contacts"
                   variant="contained"
                   sx={{
                     bgcolor: "#2D2DFF",
@@ -56,12 +58,13 @@ function HomePage() {
                     px: 3,
                     py: 1.5,
                     "&:hover": {
-                      bgcolor: "#6C63FF",
+                      bgcolor: "#96bfff",
                     },
                   }}
                 >
                   Связаться с менеджером
                 </Button>
+
 
                 <Button
                   component={Link}

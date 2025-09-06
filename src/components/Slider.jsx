@@ -97,6 +97,7 @@ function Slider() {
               {/* Картинка */}
               <div
                 style={{
+                  marginLeft: "5px",
                   flex: 1,
                   padding: "15px",
                   display: "flex",
@@ -112,7 +113,7 @@ function Slider() {
                     height: "100%",
                     objectFit: "cover",
                     borderRadius: "12px",
-                    border: "3px solid #2D2DFF", // обводка синим
+                    border: "3px solid #2D2DFF", 
                   }}
                 />
               </div>
