@@ -78,7 +78,7 @@ function ContactsPage() {
           gutterBottom
           sx={{ fontFamily: "Raleway, sans-serif", fontWeight: 700 }}
         >
-          Связаться с нами
+          Оставьте заявку нашему менеджеру
         </Typography>
         <Typography
           variant="body2"

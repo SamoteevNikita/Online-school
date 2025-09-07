@@ -40,7 +40,7 @@ function Slider() {
   ];
 
   return (
-    <div style={{ maxWidth: "1000px", margin: "40px auto" }}>
+    <div style={{ maxWidth: "1500px", margin: "40px auto" }}>
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
         navigation
@@ -57,14 +57,14 @@ function Slider() {
                 flexDirection: "row",
                 alignItems: "center",
                 width: "100%",
-                height: "500px",
+                height: "700px",
                 borderRadius: "12px",
                 overflow: "hidden",
-                background: "#1A1A40", // брендовый фон
+                background: "#1A1A40",
                 color: "#FFFFFF",
               }}
             >
-              {/* Текст */}
+              
               <div
                 style={{
                   flex: 1,
@@ -77,7 +77,7 @@ function Slider() {
                     fontSize: "2rem",
                     margin: 0,
                     fontFamily: "Raleway, sans-serif",
-                    color: "#A1C2FF", // голубой акцент
+                    color: "#A1C2FF", 
                   }}
                 >
                   {slide.title}
@@ -94,12 +94,10 @@ function Slider() {
                 </p>
               </div>
 
-              {/* Картинка */}
+              
               <div
                 style={{
-                  marginLeft: "5px",
                   flex: 1,
-                  padding: "15px",
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
@@ -110,13 +108,18 @@ function Slider() {
                   alt={slide.title}
                   style={{
                     width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
+                    maxWidth: "600px", 
+                    height: "auto",
+                    objectFit: "contain",
                     borderRadius: "12px",
-                    border: "3px solid #2D2DFF", 
+                    border: "3px solid #2D2DFF",
                   }}
                 />
               </div>
+
+
+
+
             </div>
           </SwiperSlide>
         ))}

@@ -5,13 +5,13 @@ function Footer() {
     <Box
       component="footer"
       sx={{
-        backgroundColor: "rgba(161, 194, 255, 0.15)", // такой же фон, как у Header
-        backdropFilter: "blur(10px)",                  // эффект стекла
+        backgroundColor: "rgba(161, 194, 255, 0.15)", 
+        backdropFilter: "blur(10px)",                 
         color: "#FFFFFF",
         textAlign: "center",
         p: 3,
         mt: "auto",
-        borderTop: "1px solid rgba(255,255,255,0.2)", // лёгкая разделительная линия
+        borderTop: "1px solid rgba(255,255,255,0.2)", 
         fontFamily: "Inter, sans-serif",
       }}
     >
