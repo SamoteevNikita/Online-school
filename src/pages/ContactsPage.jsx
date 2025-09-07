@@ -1,11 +1,19 @@
 import { useState } from "react";
-import { TextField, Button, Box, Typography, Paper } from "@mui/material";
+import {
+  TextField,
+  Button,
+  Box,
+  Typography,
+  Paper,
+} from "@mui/material";
+import { Phone, Email, WhatsApp, LocationOn } from "@mui/icons-material";
 
 function ContactsPage() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
+    subject: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -30,10 +38,6 @@ function ContactsPage() {
       newErrors.email = "Некорректный email";
     }
 
-    if (!formData.message.trim()) {
-      newErrors.message = "Введите сообщение";
-    }
-
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -45,125 +49,250 @@ function ContactsPage() {
 
     console.log("Форма отправлена:", formData);
 
-    setFormData({ name: "", email: "", message: "" });
+    setFormData({ name: "", email: "", subject: "", message: "" });
     setErrors({});
   };
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        minHeight: "100vh",
-        
-        p: 2,
-      }}
-    >
+    <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+      {/* Заголовок */}
+      <Typography
+        variant="h3"
+        component="h1"
+        fontWeight="bold"
+        gutterBottom
+        sx={{
+          color: "white",
+          fontFamily: "Raleway, sans-serif",
+          mb: 4,
+        }}
+      >
+        Contact us
+      </Typography>
+
+      {/* Основной контейнер */}
       <Paper
         elevation={6}
         sx={{
-          p: 4,
-          maxWidth: 420,
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: 4,
+          maxWidth: 1000,
           width: "100%",
-          borderRadius: 3,
-          textAlign: "center",
-          background: "rgba(255, 255, 255, 0.05)", // прозрачный
-          backdropFilter: "blur(12px)", // эффект стекла
-          color: "#FFFFFF",
+          p: 6,
+          borderRadius: "24px",
+          background: "rgba(255, 255, 255, 0.1)",
+          backdropFilter: "blur(12px)",
+          color: "white",
         }}
       >
-        <Typography
-          variant="h4"
-          gutterBottom
-          sx={{ fontFamily: "Raleway, sans-serif", fontWeight: 700 }}
+        {/* Левая часть: форма */}
+        <Box
+          sx={{
+            borderRadius: "16px",
+            backdropFilter: "blur(1px)",
+            p: 3,
+            color: "white",
+            textAlign: "center",
+            minHeight: 100,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
         >
-          Оставьте заявку нашему менеджеру
-        </Typography>
-        <Typography
-          variant="body2"
-          sx={{ mb: 3, opacity: 0.8, fontFamily: "Inter, sans-serif" }}
+          <Typography
+            variant="subtitle2"
+            sx={{ color: "#aaa", fontWeight: 500 }}
+          >
+            Contact Us
+          </Typography>
+          <Typography
+            variant="h4"
+            gutterBottom
+            sx={{ fontWeight: "bold", mb: 3 }}
+          >
+            Get In Touch
+          </Typography>
+
+          {/* форма */}
+          <form onSubmit={handleSubmit} style={{ width: "100%" }}>
+            {/* Name */}
+            <TextField
+              placeholder="Your Name..."
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              fullWidth
+              margin="normal"
+              error={!!errors.name}
+              helperText={errors.name || ""}
+              InputProps={{ style: { color: "#fff" } }}
+              sx={{
+                "& .MuiOutlinedInput-root": {
+                  "& fieldset": { borderColor: "#444" },
+                  "&:hover fieldset": { borderColor: "#777" },
+                  "&.Mui-focused fieldset": { borderColor: "#bbb" },
+                },
+                input: { color: "#fff" },
+              }}
+            />
+
+            {/* Email */}
+            <TextField
+              placeholder="example@yourmail.com"
+              name="email"
+              type="email"
+              value={formData.email}
+              onChange={handleChange}
+              fullWidth
+              margin="normal"
+              error={!!errors.email}
+              helperText={errors.email || ""}
+              InputProps={{ style: { color: "#fff" } }}
+              sx={{
+                "& .MuiOutlinedInput-root": {
+                  "& fieldset": { borderColor: "#444" },
+                  "&:hover fieldset": { borderColor: "#777" },
+                  "&.Mui-focused fieldset": { borderColor: "#bbb" },
+                },
+                input: { color: "#fff" },
+              }}
+            />
+
+            {/* Subject */}
+            <TextField
+              placeholder="Title..."
+              name="subject"
+              value={formData.subject}
+              onChange={handleChange}
+              fullWidth
+              margin="normal"
+              InputProps={{ style: { color: "#fff" } }}
+              sx={{
+                "& .MuiOutlinedInput-root": {
+                  "& fieldset": { borderColor: "#444" },
+                  "&:hover fieldset": { borderColor: "#777" },
+                  "&.Mui-focused fieldset": { borderColor: "#bbb" },
+                },
+                input: { color: "#fff" },
+              }}
+            />
+
+            {/* Message */}
+            <TextField
+              placeholder="Type Here..."
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              fullWidth
+              margin="normal"
+              multiline
+              rows={4}
+              InputProps={{ style: { color: "#fff" } }}
+              sx={{
+                "& .MuiOutlinedInput-root": {
+                  "& fieldset": { borderColor: "#444" },
+                  "&:hover fieldset": { borderColor: "#777" },
+                  "&.Mui-focused fieldset": { borderColor: "#bbb" },
+                },
+                textarea: { color: "#fff" },
+              }}
+            />
+
+            <Button
+              type="submit"
+              fullWidth
+              sx={{
+                mt: 3,
+                py: 1.2,
+                borderRadius: "30px",
+                fontWeight: "bold",
+                border: "1px solid #555",
+                backgroundColor: "transparent",
+                color: "#fff",
+                "&:hover": {
+                  backgroundColor: "#2d2dff",
+                  borderColor: "#2d2dff",
+                },
+              }}
+            >
+              Send Now
+            </Button>
+          </form>
+        </Box>
+
+        {/* Правая часть: контакты + карта */}
+        <Box
+          sx={{
+            borderRadius: "16px",
+            backdropFilter: "blur(1px)",
+            p: 3,
+            color: "white",
+            textAlign: "center",
+            minHeight: 100,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "flex-start",
+            gap: 3,
+          }}
         >
-          Напишите нам, и мы ответим в ближайшее время
-        </Typography>
+          <Typography
+            variant="h5"
+            fontWeight="bold"
+            gutterBottom
+            sx={{ mb: 2 }}
+          >
+            Contact Info
+          </Typography>
 
-        <form onSubmit={handleSubmit}>
-          <TextField
-            label="Имя"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            fullWidth
-            margin="normal"
-            error={!!errors.name}
-            helperText={errors.name}
-            InputLabelProps={{ style: { color: "#A1C2FF" } }}
-            InputProps={{
-              style: {
-                color: "#fff",
-                borderRadius: "8px",
-              },
-            }}
-          />
-
-          <TextField
-            label="Email"
-            name="email"
-            type="email"
-            value={formData.email}
-            onChange={handleChange}
-            fullWidth
-            margin="normal"
-            error={!!errors.email}
-            helperText={errors.email}
-            InputLabelProps={{ style: { color: "#A1C2FF" } }}
-            InputProps={{
-              style: {
-                color: "#fff",
-                borderRadius: "8px",
-              },
-            }}
-          />
-
-          <TextField
-            label="Сообщение"
-            name="message"
-            multiline
-            rows={4}
-            value={formData.message}
-            onChange={handleChange}
-            fullWidth
-            margin="normal"
-            error={!!errors.message}
-            helperText={errors.message}
-            InputLabelProps={{ style: { color: "#A1C2FF" } }}
-            InputProps={{
-              style: {
-                color: "#fff",
-                borderRadius: "8px",
-              },
-            }}
-          />
-
-          <Button
-            type="submit"
-            fullWidth
+          {/* Контакты в 2 колонки */}
+          <Box
             sx={{
-              mt: 3,
-              py: 1.2,
-              borderRadius: "8px",
-              fontWeight: "bold",
-              background:
-                "linear-gradient(90deg, #2D2DFF, #6C63FF)", // градиент кнопки
-              color: "#fff",
-              "&:hover": {
-                background: "linear-gradient(90deg, #1F4099, #2D2DFF)",
-              },
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              gap: 3,
+              width: "100%",
+              textAlign: "center",
             }}
           >
-            Отправить
-          </Button>
-        </form>
+            <Box>
+              <Phone sx={{ fontSize: 32, mb: 1 }} />
+              <Typography variant="body1">+6022 4002 567</Typography>
+            </Box>
+
+            <Box>
+              <Email sx={{ fontSize: 32, mb: 1 }} />
+              <Typography variant="body1">Example@Email.Com</Typography>
+            </Box>
+
+            <Box>
+              <WhatsApp sx={{ fontSize: 32, mb: 1 }} />
+              <Typography variant="body1">(082) 245-3253</Typography>
+            </Box>
+
+            <Box>
+              <LocationOn sx={{ fontSize: 32, mb: 1 }} />
+              <Typography variant="body1">
+                2443 Oak Ridge Omaha, GA 45065
+              </Typography>
+            </Box>
+          </Box>
+
+          {/* Карта */}
+          <Box sx={{ mt: 2, width: "100%", borderRadius: "12px", overflow: "hidden" }}>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d243646.4603586211!2d-96.0405829!3d41.252363!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87938e6e1e3c9bfb%3A0x79b5daebcfa56f!2sOmaha%2C%20NE%2C%20USA!5e0!3m2!1sen!2s!4v1691170012345"
+              width="100%"
+              height="250"
+              style={{ border: 0 }}
+              allowFullScreen=""
+              loading="lazy"
+              title="map"
+            ></iframe>
+          </Box>
+        </Box>
       </Paper>
     </Box>
   );
