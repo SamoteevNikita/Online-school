@@ -84,27 +84,6 @@ function Header() {
           </Link>
           <Link
             component={NavLink}
-            to="/teachers"
-            underline="none"
-            color="#FFFFFF"
-            sx={{
-              px: 1.5,
-              py: 0.7,
-              borderRadius: "6px",
-              transition: "0.3s",
-              fontFamily: "Inter, sans-serif",
-              fontSize: "1.1rem",
-              fontWeight: 500,
-              "&:hover": {
-                color: "#2D2DFF",
-                backgroundColor: "rgba(45,45,255,0.15)",
-              },
-            }}
-          >
-            Teachers
-          </Link>
-          <Link
-            component={NavLink}
             to="/contacts"
             underline="none"
             color="#FFFFFF"

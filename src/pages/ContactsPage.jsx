@@ -1,19 +1,21 @@
 import { useState } from "react";
-import {
-  TextField,
-  Button,
-  Box,
-  Typography,
-  Paper,
-} from "@mui/material";
-import { Phone, Email, WhatsApp, LocationOn } from "@mui/icons-material";
+import { TextField, Button, Box, Typography, Paper } from "@mui/material";
+import { ToggleButton, ToggleButtonGroup } from "@mui/material";
+import { 
+  Phone, 
+  Email, 
+  WhatsApp, 
+  LocationOn, 
+  Telegram, 
+  PhoneAndroid 
+} from "@mui/icons-material";
 
 function ContactsPage() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    contactMethod: "",
     message: "",
-    subject: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -38,6 +40,10 @@ function ContactsPage() {
       newErrors.email = "Некорректный email";
     }
 
+    if (!formData.contactMethod) {
+      newErrors.contactMethod = "Выберите способ связи";
+    }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -49,12 +55,14 @@ function ContactsPage() {
 
     console.log("Форма отправлена:", formData);
 
-    setFormData({ name: "", email: "", subject: "", message: "" });
+    setFormData({ name: "", email: "", contactMethod: "", message: "" });
     setErrors({});
   };
 
   return (
-    <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+    <Box
+      sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+    >
       {/* Заголовок */}
       <Typography
         variant="h3"
@@ -160,24 +168,56 @@ function ContactsPage() {
               }}
             />
 
-            {/* Subject */}
-            <TextField
-              placeholder="Title..."
-              name="subject"
-              value={formData.subject}
-              onChange={handleChange}
-              fullWidth
-              margin="normal"
-              InputProps={{ style: { color: "#fff" } }}
-              sx={{
-                "& .MuiOutlinedInput-root": {
-                  "& fieldset": { borderColor: "#444" },
-                  "&:hover fieldset": { borderColor: "#777" },
-                  "&.Mui-focused fieldset": { borderColor: "#bbb" },
-                },
-                input: { color: "#fff" },
-              }}
-            />
+            {/* Preferred Contact Method */}
+            <Box sx={{ mt: 2, mb: 2, width: "100%" }}>
+              <Typography variant="subtitle2" sx={{ color: "#aaa", mb: 1 }}>
+                Укажите способ связи:
+              </Typography>
+              <ToggleButtonGroup
+                value={formData.contactMethod}
+                exclusive
+                onChange={(e, newValue) => {
+                  if (newValue !== null) {
+                    setFormData({ ...formData, contactMethod: newValue });
+                  }
+                }}
+                fullWidth
+                sx={{
+                  "& .MuiToggleButton-root": {
+                    border: "1px solid #555",
+                    color: "#fff",
+                    borderRadius: "12px",
+                    textTransform: "none",
+                    fontWeight: "bold",
+                    flex: 1,
+                  },
+                  "& .Mui-selected": {
+                    backgroundColor: "#2d2dff",
+                    color: "#fff",
+                    borderColor: "#2d2dff",
+                  },
+                }}
+              >
+                <ToggleButton value="telegram">
+                  <Telegram sx={{ mr: 1 }} /> Telegram
+                </ToggleButton>
+                <ToggleButton value="whatsapp">
+                  <WhatsApp sx={{ mr: 1 }} /> WhatsApp
+                </ToggleButton>
+                <ToggleButton value="viber">
+                  <PhoneAndroid sx={{ mr: 1 }} /> Viber
+                </ToggleButton>
+              </ToggleButtonGroup>
+
+              {errors.contactMethod && (
+                <Typography
+                  variant="caption"
+                  sx={{ color: "red", mt: 1, display: "block", textAlign: "left" }}
+                >
+                  {errors.contactMethod}
+                </Typography>
+              )}
+            </Box>
 
             {/* Message */}
             <TextField
@@ -281,7 +321,14 @@ function ContactsPage() {
           </Box>
 
           {/* Карта */}
-          <Box sx={{ mt: 2, width: "100%", borderRadius: "12px", overflow: "hidden" }}>
+          <Box
+            sx={{
+              mt: 2,
+              width: "100%",
+              borderRadius: "12px",
+              overflow: "hidden",
+            }}
+          >
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d243646.4603586211!2d-96.0405829!3d41.252363!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87938e6e1e3c9bfb%3A0x79b5daebcfa56f!2sOmaha%2C%20NE%2C%20USA!5e0!3m2!1sen!2s!4v1691170012345"
               width="100%"
