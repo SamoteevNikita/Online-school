@@ -2,6 +2,8 @@ import React from "react";
 import Slider from "../components/Slider";
 import { Box, Typography, Grid, Paper, List, ListItem, ListItemIcon, ListItemText } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
+import PricesSlider from "../components/PricesSlider";
+
 
 function CoursesPage() {
   const advantages = [
@@ -78,6 +80,14 @@ function CoursesPage() {
             </Grid>
           ))}
         </Grid>
+      </Box>
+
+      {/* Слайдер цен */}
+      <Box sx={{ mt: 8, mb: 6 }}>
+        <Typography variant="h4" align="center" fontWeight="bold" gutterBottom>
+          Наши расценки
+        </Typography>
+        <PricesSlider />
       </Box>
 
       {/* Блок со ⭐ списком */}
