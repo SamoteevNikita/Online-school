@@ -1,24 +1,23 @@
 import { useState } from "react";
-import { TextField, Button, Box, Typography, Paper } from "@mui/material";
-import { ToggleButton, ToggleButtonGroup } from "@mui/material";
-import { 
-  Phone, 
-  Email, 
-  WhatsApp, 
-  LocationOn, 
-  Telegram, 
-  PhoneAndroid 
-} from "@mui/icons-material";
+import {
+  Box,
+  Typography,
+  TextField,
+  IconButton,
+  Link,
+  Paper,
+} from "@mui/material";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 function ContactsPage() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    contactMethod: "",
+    phone: "",
     message: "",
+    contactMethod: "",
+    telegramUsername: "",
   });
-
-  const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
     setFormData({
@@ -27,317 +26,276 @@ function ContactsPage() {
     });
   };
 
-  const validate = () => {
-    let newErrors = {};
-
-    if (!formData.name.trim()) {
-      newErrors.name = "Введите имя";
+  const sendFormData = async (data) => {
+    try {
+      console.log("📤 Відправка даних:", data);
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        message: "",
+        contactMethod: "",
+        telegramUsername: "",
+      });
+    } catch (error) {
+      console.error("❌ Помилка при відправці форми:", error);
     }
-
-    if (!formData.email.trim()) {
-      newErrors.email = "Введите email";
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "Некорректный email";
-    }
-
-    if (!formData.contactMethod) {
-      newErrors.contactMethod = "Выберите способ связи";
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    if (!validate()) return;
-
-    console.log("Форма отправлена:", formData);
-
-    setFormData({ name: "", email: "", contactMethod: "", message: "" });
-    setErrors({});
+    sendFormData(formData);
   };
 
   return (
     <Box
-      sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+      sx={{
+        minHeight: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "transparent",
+        p: { xs: 2, sm: 4, md: 6 },
+      }}
     >
-      {/* Заголовок */}
-      <Typography
-        variant="h3"
-        component="h1"
-        fontWeight="bold"
-        gutterBottom
-        sx={{
-          color: "white",
-          fontFamily: "Raleway, sans-serif",
-          mb: 4,
-        }}
-      >
-        Contact us
-      </Typography>
-
-      {/* Основной контейнер */}
       <Paper
-        elevation={6}
+        elevation={8}
         sx={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: 4,
-          maxWidth: 1000,
-          width: "100%",
-          p: 6,
-          borderRadius: "24px",
-          background: "rgba(255, 255, 255, 0.1)",
-          backdropFilter: "blur(12px)",
-          color: "white",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          borderRadius: "40px",
+          backgroundColor: "rgba(20, 20, 60, 0.4)",
+          color: "#fff",
+          fontFamily: "Poppins, sans-serif",
+          width: { xs: "100%", sm: "90%", md: "1000px" },
+          p: { xs: 4, sm: 6, md: 8 },
         }}
       >
-        {/* Левая часть: форма */}
-        <Box
+        <Typography
+          variant="h1"
           sx={{
-            borderRadius: "16px",
-            backdropFilter: "blur(1px)",
-            p: 3,
-            color: "white",
+            fontSize: { xs: "36px", sm: "48px", md: "72px", lg: "90px" },
+            fontWeight: 700,
+            letterSpacing: 2,
+            mb: { xs: 4, md: 6 },
             textAlign: "center",
-            minHeight: 100,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
           }}
         >
-          <Typography
-            variant="subtitle2"
-            sx={{ color: "#aaa", fontWeight: 500 }}
+          Залишайся на зв'язку
+        </Typography>
+
+        <Box
+          component="form"
+          onSubmit={handleSubmit}
+          sx={{
+            width: "100%",
+            maxWidth: 900,
+            display: "flex",
+            flexDirection: "column",
+            gap: { xs: 3, md: 5 },
+          }}
+        >
+          <TextField
+            variant="standard"
+            name="name"
+            placeholder="Name"
+            value={formData.name}
+            onChange={handleChange}
+            InputProps={{
+              disableUnderline: false,
+              sx: {
+                color: "white",
+                fontSize: "25px",
+                borderBottom: "1px solid #444",
+                "&:hover": { borderBottom: "1px solid #888" },
+                "&:focus-within": { borderBottom: "1px solid white" },
+              },
+            }}
+            fullWidth
+          />
+
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: { xs: "column", md: "row" },
+              gap: 4,
+            }}
           >
-            Contact Us
-          </Typography>
-          <Typography
-            variant="h4"
-            gutterBottom
-            sx={{ fontWeight: "bold", mb: 3 }}
-          >
-            Get In Touch
-          </Typography>
-
-          {/* форма */}
-          <form onSubmit={handleSubmit} style={{ width: "100%" }}>
-            {/* Name */}
-            <TextField
-              placeholder="Your Name..."
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              fullWidth
-              margin="normal"
-              error={!!errors.name}
-              helperText={errors.name || ""}
-              InputProps={{ style: { color: "#fff" } }}
-              sx={{
-                "& .MuiOutlinedInput-root": {
-                  "& fieldset": { borderColor: "#444" },
-                  "&:hover fieldset": { borderColor: "#777" },
-                  "&.Mui-focused fieldset": { borderColor: "#bbb" },
-                },
-                input: { color: "#fff" },
-              }}
-            />
-
-            {/* Email */}
-            <TextField
-              placeholder="example@yourmail.com"
-              name="email"
-              type="email"
-              value={formData.email}
-              onChange={handleChange}
-              fullWidth
-              margin="normal"
-              error={!!errors.email}
-              helperText={errors.email || ""}
-              InputProps={{ style: { color: "#fff" } }}
-              sx={{
-                "& .MuiOutlinedInput-root": {
-                  "& fieldset": { borderColor: "#444" },
-                  "&:hover fieldset": { borderColor: "#777" },
-                  "&.Mui-focused fieldset": { borderColor: "#bbb" },
-                },
-                input: { color: "#fff" },
-              }}
-            />
-
-            {/* Preferred Contact Method */}
-            <Box sx={{ mt: 2, mb: 2, width: "100%" }}>
-              <Typography variant="subtitle2" sx={{ color: "#aaa", mb: 1 }}>
-                Укажите способ связи:
-              </Typography>
-              <ToggleButtonGroup
-                value={formData.contactMethod}
-                exclusive
-                onChange={(e, newValue) => {
-                  if (newValue !== null) {
-                    setFormData({ ...formData, contactMethod: newValue });
-                  }
+            {["email", "phone"].map((field) => (
+              <TextField
+                key={field}
+                variant="standard"
+                name={field}
+                placeholder={field === "email" ? "E-mail" : "Phone"}
+                value={formData[field]}
+                onChange={handleChange}
+                InputProps={{
+                  disableUnderline: false,
+                  sx: {
+                    color: "white",
+                    fontSize: "25px",
+                    borderBottom: "1px solid #444",
+                    "&:hover": { borderBottom: "1px solid #888" },
+                    "&:focus-within": { borderBottom: "1px solid white" },
+                  },
                 }}
                 fullWidth
-                sx={{
-                  "& .MuiToggleButton-root": {
-                    border: "1px solid #555",
-                    color: "#fff",
-                    borderRadius: "12px",
-                    textTransform: "none",
-                    fontWeight: "bold",
-                    flex: 1,
-                  },
-                  "& .Mui-selected": {
-                    backgroundColor: "#2d2dff",
-                    color: "#fff",
-                    borderColor: "#2d2dff",
-                  },
-                }}
-              >
-                <ToggleButton value="telegram">
-                  <Telegram sx={{ mr: 1 }} /> Telegram
-                </ToggleButton>
-                <ToggleButton value="whatsapp">
-                  <WhatsApp sx={{ mr: 1 }} /> WhatsApp
-                </ToggleButton>
-                <ToggleButton value="viber">
-                  <PhoneAndroid sx={{ mr: 1 }} /> Viber
-                </ToggleButton>
-              </ToggleButtonGroup>
-
-              {errors.contactMethod && (
-                <Typography
-                  variant="caption"
-                  sx={{ color: "red", mt: 1, display: "block", textAlign: "left" }}
-                >
-                  {errors.contactMethod}
-                </Typography>
-              )}
-            </Box>
-
-            {/* Message */}
-            <TextField
-              placeholder="Type Here..."
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              fullWidth
-              margin="normal"
-              multiline
-              rows={4}
-              InputProps={{ style: { color: "#fff" } }}
-              sx={{
-                "& .MuiOutlinedInput-root": {
-                  "& fieldset": { borderColor: "#444" },
-                  "&:hover fieldset": { borderColor: "#777" },
-                  "&.Mui-focused fieldset": { borderColor: "#bbb" },
-                },
-                textarea: { color: "#fff" },
-              }}
-            />
-
-            <Button
-              type="submit"
-              fullWidth
-              sx={{
-                mt: 3,
-                py: 1.2,
-                borderRadius: "30px",
-                fontWeight: "bold",
-                border: "1px solid #555",
-                backgroundColor: "transparent",
-                color: "#fff",
-                "&:hover": {
-                  backgroundColor: "#2d2dff",
-                  borderColor: "#2d2dff",
-                },
-              }}
-            >
-              Send Now
-            </Button>
-          </form>
-        </Box>
-
-        {/* Правая часть: контакты + карта */}
-        <Box
-          sx={{
-            borderRadius: "16px",
-            backdropFilter: "blur(1px)",
-            p: 3,
-            color: "white",
-            textAlign: "center",
-            minHeight: 100,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "flex-start",
-            gap: 3,
-          }}
-        >
-          <Typography
-            variant="h5"
-            fontWeight="bold"
-            gutterBottom
-            sx={{ mb: 2 }}
-          >
-            Contact Info
-          </Typography>
-
-          {/* Контакты в 2 колонки */}
-          <Box
-            sx={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: 3,
-              width: "100%",
-              textAlign: "center",
-            }}
-          >
-            <Box>
-              <Phone sx={{ fontSize: 32, mb: 1 }} />
-              <Typography variant="body1">+6022 4002 567</Typography>
-            </Box>
-
-            <Box>
-              <Email sx={{ fontSize: 32, mb: 1 }} />
-              <Typography variant="body1">Example@Email.Com</Typography>
-            </Box>
-
-            <Box>
-              <WhatsApp sx={{ fontSize: 32, mb: 1 }} />
-              <Typography variant="body1">(082) 245-3253</Typography>
-            </Box>
-
-            <Box>
-              <LocationOn sx={{ fontSize: 32, mb: 1 }} />
-              <Typography variant="body1">
-                2443 Oak Ridge Omaha, GA 45065
-              </Typography>
-            </Box>
+              />
+            ))}
           </Box>
 
-          {/* Карта */}
-          <Box
+          <TextField
+            variant="standard"
+            name="message"
+            placeholder="Message"
+            multiline
+            minRows={1}
+            value={formData.message}
+            onChange={handleChange}
+            InputProps={{
+              disableUnderline: false,
+              sx: {
+                color: "white",
+                fontSize: "25px",
+                borderBottom: "1px solid #444",
+                "&:hover": { borderBottom: "1px solid #888" },
+                "&:focus-within": { borderBottom: "1px solid white" },
+              },
+            }}
+            fullWidth
+          />
+
+          <Typography
             sx={{
-              mt: 2,
-              width: "100%",
-              borderRadius: "12px",
-              overflow: "hidden",
+              color: "#ccc",
+              fontSize: "16px",
+              mt: 4,
+              mb: 1,
+              fontFamily: "Poppins, sans-serif",
             }}
           >
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d243646.4603586211!2d-96.0405829!3d41.252363!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87938e6e1e3c9bfb%3A0x79b5daebcfa56f!2sOmaha%2C%20NE%2C%20USA!5e0!3m2!1sen!2s!4v1691170012345"
-              width="100%"
-              height="250"
-              style={{ border: 0 }}
-              allowFullScreen=""
-              loading="lazy"
-              title="map"
-            ></iframe>
+            Яким способом з вами буде зручніше зв’язатися?
+          </Typography>
+
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "flex-start",
+              gap: 3,
+            }}
+          >
+            {["Telegram", "Viber"].map((option) => (
+              <Box
+                key={option}
+                component="button"
+                type="button"
+                onClick={() =>
+                  setFormData({ ...formData, contactMethod: option })
+                }
+                style={{
+                  backgroundColor:
+                    formData.contactMethod === option ? "#fff" : "transparent",
+                  color: formData.contactMethod === option ? "#000" : "#fff",
+                  border: "1px solid #888",
+                  borderRadius: "30px",
+                  padding: "12px 28px",
+                  cursor: "pointer",
+                  fontFamily: "Poppins, sans-serif",
+                  fontSize: "20px",
+                  fontWeight: 500,
+                  transition: "all 0.3s ease",
+                }}
+              >
+                {option}
+              </Box>
+            ))}
+          </Box>
+
+          {formData.contactMethod === "Telegram" && (
+            <TextField
+              variant="standard"
+              name="telegramUsername"
+              placeholder="@username"
+              value={formData.telegramUsername || ""}
+              onChange={handleChange}
+              InputProps={{
+                disableUnderline: false,
+                sx: {
+                  color: "white",
+                  fontSize: "16px",
+                  borderBottom: "1px solid #444",
+                  mt: 2,
+                  "&:hover": { borderBottom: "1px solid #888" },
+                  "&:focus-within": { borderBottom: "1px solid white" },
+                },
+              }}
+              fullWidth
+            />
+          )}
+
+          <IconButton
+            type="submit"
+            sx={{
+              alignSelf: "flex-start",
+              color: "white",
+              transition: "transform 0.2s ease",
+              "&:hover": { transform: "translateX(6px)" },
+            }}
+          >
+            <ArrowForwardIcon sx={{ fontSize: 32 }} />
+          </IconButton>
+        </Box>
+
+        {/* Блок соцсетей */}
+        <Box sx={{ mt: { xs: 6, md: 10 }, textAlign: "center" }}>
+          <Typography sx={{ color: "#aaa", mb: 1, fontSize: 14 }}>
+            Hate contact forms? Me too —{" "}
+            <Link
+              href="mailto:Ourlink@gmail.com"
+              underline="hover"
+              sx={{ color: "#fff" }}
+            >
+              Ourlink@gmail.com
+            </Link>
+          </Typography>
+
+          <Box
+            sx={{
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: "center",
+              gap: 3,
+              mt: 2,
+            }}
+          >
+            <Link
+              href="https://www.instagram.com/myvision.school/"
+              target="_blank"
+              rel="noopener"
+              sx={{
+                color: "#fff",
+                fontSize: "18px",
+                transition: "color 0.3s ease",
+                "&:hover": { color: "#A1C2FF" },
+              }}
+            >
+              Instagram
+            </Link>
+            <Link
+              href="https://www.tiktok.com/@myvision.school"
+              target="_blank"
+              rel="noopener"
+              sx={{
+                color: "#fff",
+                fontSize: "18px",
+                transition: "color 0.3s ease",
+                "&:hover": { color: "#A1C2FF" },
+              }}
+            >
+              TikTok
+            </Link>
           </Box>
         </Box>
       </Paper>

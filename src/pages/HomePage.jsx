@@ -4,6 +4,11 @@ import onlineGermanImage from "../assets/images/onlineGerman.avif";
 import secondImage from "../assets/images/Untitled.avif";
 import cardsImage from "../assets/images/Untitled.avif"; // Добавил, чтобы избежать повторного использования
 import sourceImage from "../assets/images/source.png"; // картинка, которую ты загрузил
+import SeoBlock from "../components/seoBlock";
+import founderImage from "../assets/images/seoImage.png";
+import nativeImage from "../assets/images/Native.JPG";
+
+
 
 function HomePage() {
   return (
@@ -26,10 +31,9 @@ function HomePage() {
               src={sourceImage}
               alt="MyVision School"
               sx={{
-                maxWidth: 400,
+                maxWidth: 200,
                 height: "auto",
                 borderRadius: "20px",
-                boxShadow: 4,
               }}
             />
           </Grid>
@@ -52,8 +56,8 @@ function HomePage() {
                 lineHeight: 1.6,
               }}
             >
-              Групові та індивідуальні заняття онлайн. <br />
-              Безкоштовний перший урок — перевірка вашого наявного рівня мови та
+              Індивідуальні заняття онлайн. <br />
+              Пробний перший урок — перевірка вашого наявного рівня мови та
               знайомство зі школою.
             </Typography>
           </Grid>
@@ -82,7 +86,7 @@ function HomePage() {
                 gutterBottom
                 sx={{ color: "white", fontFamily: "Raleway, sans-serif" }}
               >
-                Твой персональный план обучения немецкому
+                Твій персональний план навчання німецькій
               </Typography>
 
               <Typography
@@ -94,13 +98,17 @@ function HomePage() {
                   fontFamily: "Inter, sans-serif",
                 }}
               >
-                Мы обучаем немецкому языку с учетом всех пользовательских
-                настроек - твоего уровня подготовки, твоих запросов, комфортного
-                конкретно для тебя времени. Мы работаем в режиме постоянной
-                коммуникации “студент - преподаватель”. А студенты, успешно
-                сдавшие экзамены, реализуют свои первоначальные цели: успешное
-                трудоустройство, адаптация в европейской среде, расширение
-                социальных горизонтов.
+                Твій персональний план вивчення німецької.
+
+                Ми навчаємо німецької мови з урахуванням саме твоїх цілей і темпу.
+                Твій рівень, запити та зручний графік — усе враховано.
+                Наш формат — постійна взаємодія «студент — викладач», живе спілкування та реальні результати.
+
+                Після навчання ти зможеш упевнено складати іспити, працювати чи навчатися в Європі, розширювати свої можливості та горизонти.
+
+
+                Звʼязок з менеджером 
+                Дізнатися більше
               </Typography>
 
               <Box sx={{ display: "flex", gap: 2, mt: 4, mb: 4 }}>
@@ -118,7 +126,7 @@ function HomePage() {
                     },
                   }}
                 >
-                  Связаться с менеджером
+                  Зв'язатися з менеджером
                 </Button>
                 <Button
                   component={Link}
@@ -137,7 +145,7 @@ function HomePage() {
                     },
                   }}
                 >
-                  Узнать больше
+                  Дізнатись більше
                 </Button>
               </Box>
 
@@ -224,15 +232,12 @@ function HomePage() {
             }}
           >
             <Typography variant="h6" gutterBottom sx={{ fontWeight: "bold" }}>
-              Групповое обучение
+              Групове навчання — Живе спілкування
             </Typography>
             <Typography variant="body2" sx={{ opacity: 0.8, fontSize: "1rem" }}>
-              Занимаясь в группе, студенты могут учиться не только на своих, но
-              и на чужих ошибках, замечая, что и как исправляет преподаватель.
-              Это помогает избежать типичных трудностей, когда приходит их
-              очередь, а также перенимать удачные языковые приемы у других
-              участников. Такой формат позволяет расслабиться и учиться,
-              наблюдая за успехами других.
+              У групі ти постійно чуєш німецьку від інших студентів і поступово 
+              починаєш думати нею сам. Це чудовий спосіб подолати мовний бар’єр,
+               розвинути впевненість і звикнути говорити спонтанно. Живе спілкування — найкраща практика!
             </Typography>
           </Box>
 
@@ -253,14 +258,11 @@ function HomePage() {
             }}
           >
             <Typography variant="h6" gutterBottom sx={{ fontWeight: "bold" }}>
-              Индивидуальные уроки
+              Індивідуальні уроки — Твій темп і комфорт
             </Typography>
             <Typography variant="body2" sx={{ opacity: 0.8, fontSize: "1rem" }}>
-              Индивидуальные занятия построены на твоих личных запросах, в
-              комфортном темпе и графике. Преподаватель подберет под тебя темы
-              разговоров, уровень сложности, в зависимости от твоих возможностей
-              будет подобран словарный запас и сложность грамматики. Для
-              максимальной пользы тебе будет необходимо раскрываться полностью.
+              Тут у центрі — ти. Викладач підлаштовує матеріал, темп і завдання саме під тебе. Без поспіху, без тиску —
+              лише впевнене просування до мети. Ідеальний варіант для тих, хто цінує спокій та ефективність.
             </Typography>
           </Box>
         </Box>
@@ -288,7 +290,7 @@ function HomePage() {
               gutterBottom
               sx={{ color: "white", fontFamily: "Raleway, sans-serif" }}
             >
-              Подача материала
+              Подача матеріалу
             </Typography>
           </Box>
 
@@ -318,18 +320,14 @@ function HomePage() {
               }}
             >
               <Typography variant="h6" gutterBottom sx={{ fontWeight: "bold" }}>
-                Групповое обучение
+                Групові заняття — Мотивація разом
               </Typography>
               <Typography
                 variant="body2"
                 sx={{ opacity: 0.8, fontSize: "1rem" }}
               >
-                Занимаясь в группе, студенты могут учиться не только на своих,
-                но и на чужих ошибках, замечая, что и как исправляет
-                преподаватель. Это помогает избежать типичных трудностей, когда
-                приходит их очередь, а также перенимать удачные языковые приемы
-                у других участников. Такой формат позволяет расслабиться и
-                учиться, наблюдая за успехами других.
+                Навчання в команді — це енергія, підтримка й здорове суперництво. Коли бачиш успіхи інших, з’являється бажання ставати кращим. 
+                Разом простіше тримати темп, не втрачати інтерес і насолоджуватись процесом вивчення німецької.
               </Typography>
             </Box>
             <Box
@@ -350,152 +348,119 @@ function HomePage() {
               }}
             >
               <Typography variant="h6" gutterBottom sx={{ fontWeight: "bold" }}>
-                Групповое обучение
+                Індивідуальне навчання — Максимум результату
               </Typography>
               <Typography
                 variant="body2"
                 sx={{ opacity: 0.8, fontSize: "1rem" }}
               >
-                Занимаясь в группе, студенты могут учиться не только на своих,
-                но и на чужих ошибках, замечая, что и как исправляет
-                преподаватель. Это помогает избежать типичных трудностей, когда
-                приходит их очередь, а также перенимать удачные языковые приемы
-                у других участников. Такой формат позволяет расслабиться и
-                учиться, наблюдая за успехами других.
+                Кожен урок — це персональна стратегія успіху. Викладач допоможе зосередитись на слабких сторонах, розвинути вимову, 
+                граматику й розмовні навички. Такий формат дає швидкі й відчутні результати вже після кількох занять.
               </Typography>
             </Box>
           </Box>
         </Paper>
-        {/* --- Як це працює? --- */}
-        <Box sx={{ mt: 10, textAlign: "center" }}>
-          <Typography
-            variant="h3"
-            fontWeight="bold"
-            gutterBottom
-            sx={{ fontFamily: "Raleway, sans-serif", mb: 6, color: "white" }}
-          >
-            Як це працює?
-          </Typography>
 
-          <Grid container spacing={10} justifyContent="center">
-            {/* Картка 1 */}
-            <Grid item xs={12} sm={6} md={3}>
-              <Box
-                sx={{
-                  p: 4,
-                  borderRadius: "20px",
-                  height: "100%",
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "flex-start",
-                  alignItems: "center",
-                  backgroundColor: "rgba(255,255,255,0.1)",
-                  backdropFilter: "blur(8px)",
-                  color: "white",
-                  textAlign: "center",
-                }}
-              >
-                <Typography variant="h5" fontWeight="bold" gutterBottom>
-                  Free
-                </Typography>
-                <Typography variant="body2" sx={{ opacity: 0.9 }}>
-                  <span role="img" aria-label="step1">
-                    1️⃣
-                  </span>{" "}
-                  Записуєшся на безкоштовний пробний урок
-                </Typography>
-              </Box>
-            </Grid>
+        {/* Блок 1 — Основатель */}
+        <SeoBlock
+          title="Основатель школы"
+          name="Никита Войтюк"
+          description="Тут буде короткий опис про нього — ким він є, як заснував школу, який має досвід викладання німецької мови та як допомагає студентам."
+          image={founderImage}
+        />
 
-            {/* Картка 2 */}
-            <Grid item xs={12} sm={6} md={3}>
-              <Box
-                sx={{
-                  p: 4,
-                  borderRadius: "20px",
-                  height: "100%",
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "flex-start",
-                  alignItems: "center",
-                  backgroundColor: "rgba(255,255,255,0.1)",
-                  backdropFilter: "blur(8px)",
-                  color: "white",
-                  textAlign: "center",
-                }}
-              >
-                <Typography variant="h5" fontWeight="bold" gutterBottom>
-                  Тест
-                </Typography>
-                <Typography variant="body2" sx={{ opacity: 0.9 }}>
-                  <span role="img" aria-label="step2">
-                    2️⃣
-                  </span>{" "}
-                  Проходиш короткий тест і знайомишся зі школою
-                </Typography>
-              </Box>
-            </Grid>
+        {/* Блок 2 — Носитель языка */}
+        <SeoBlock
+          reverse
+          title="Native Speaker"
+          name="Blblabla"
+          description="Тут буде короткий опис про носія мови — як він допомагає студентам опанувати справжню розмовну німецьку."
+          image={nativeImage}
+        />
 
-            {/* Картка 3 */}
-            <Grid item xs={12} sm={6} md={3}>
-              <Box
-                sx={{
-                  p: 4,
-                  borderRadius: "20px",
-                  height: "100%",
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "flex-start",
-                  alignItems: "center",
-                  backgroundColor: "rgba(255,255,255,0.1)",
-                  backdropFilter: "blur(8px)",
-                  color: "white",
-                  textAlign: "center",
-                }}
-              >
-                <Typography variant="h5" fontWeight="bold" gutterBottom>
-                  План
-                </Typography>
-                <Typography variant="body2" sx={{ opacity: 0.9 }}>
-                  <span role="img" aria-label="step3">
-                    3️⃣
-                  </span>{" "}
-                  Отримуєш рекомендації та план навчання
-                </Typography>
-              </Box>
-            </Grid>
-
-            {/* Картка 4 */}
-            <Grid item xs={12} sm={6} md={3}>
-              <Box
-                sx={{
-                  p: 4,
-                  borderRadius: "20px",
-                  height: "100%",
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "flex-start",
-                  alignItems: "center",
-                  backgroundColor: "rgba(255,255,255,0.1)",
-                  backdropFilter: "blur(8px)",
-                  color: "white",
-                  textAlign: "center",
-                }}
-              >
-                <Typography variant="h5" fontWeight="bold" gutterBottom>
-                  Start
-                </Typography>
-                <Typography variant="body2" sx={{ opacity: 0.9 }}>
-                  <span role="img" aria-label="step4">
-                    4️⃣
-                  </span>{" "}
-                  Починаєш шлях до впевненої німецької мови 🚀
-                </Typography>
-              </Box>
-            </Grid>
-          </Grid>
-        </Box>
       </Container>
+
+      {/* 🔹 Финальный CTA блок */}
+      <Box
+        sx={{
+          mt: 12,
+          py: 10,
+          px: 4,
+          textAlign: "center",
+          borderRadius: "32px",
+          background: "linear-gradient(135deg, rgba(45,45,255,0.3), rgba(150,191,255,0.2))",
+          backdropFilter: "blur(10px)",
+          color: "white",
+          boxShadow: 6,
+        }}
+      >
+        <Typography
+          variant="h3"
+          component="h2"
+          fontWeight="bold"
+          sx={{
+            fontFamily: "Raleway, sans-serif",
+            mb: 3,
+          }}
+        >
+          Зроби перший крок до вільної німецької сьогодні 🇩🇪
+        </Typography>
+
+        <Typography
+          variant="h6"
+          sx={{
+            maxWidth: 700,
+            mx: "auto",
+            mb: 5,
+            color: "rgba(255,255,255,0.85)",
+            fontFamily: "Inter, sans-serif",
+            lineHeight: 1.6,
+          }}
+        >
+          Не чекай “ідеального моменту” — почни з пробного уроку вже зараз.  
+          Переконайся, що навчання може бути легким, цікавим і саме твоїм стилем.
+        </Typography>
+
+        <Box sx={{ display: "flex", justifyContent: "center", gap: 3 }}>
+          <Button
+            component={Link}
+            to="/contacts"
+            variant="contained"
+            sx={{
+              bgcolor: "#2D2DFF",
+              borderRadius: "30px",
+              px: 4,
+              py: 1.5,
+              fontSize: "1.1rem",
+              "&:hover": { bgcolor: "#96bfff" },
+            }}
+          >
+            Записатись на пробний урок
+          </Button>
+
+          <Button
+            component={Link}
+            to="/courses"
+            variant="outlined"
+            sx={{
+              px: 4,
+              py: 1.5,
+              borderRadius: "30px",
+              borderColor: "#A1C2FF",
+              color: "#A1C2FF",
+              fontSize: "1.1rem",
+              "&:hover": {
+                bgcolor: "rgba(161,194,255,0.15)",
+                borderColor: "#2D2DFF",
+                color: "#2D2DFF",
+              },
+            }}
+          >
+            Дізнатись про курси
+          </Button>
+        </Box>
+      </Box>
+
     </Box>
   );
 }
